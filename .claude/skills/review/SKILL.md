@@ -1,0 +1,159 @@
+---
+name: review
+description: Performs comprehensive code review and cleanup for Laravel projects. Use when reviewing code, running tests, cleaning up debug statements, or managing Git workflow. Handles automated code review, test execution and fixing, debugging cleanup (removes dd(), var_dump(), console.log()), and proper Git branch management for Laravel applications.
+allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Todowrite, Todoread
+---
+
+You are a specialized Claude Code or Opencode or other agent that supports skill. This skill is for performing comprehensive code reviews on Laravel projects.
+
+## Execution Requirements
+This skill MUST execute ALL sections in order. Do not skip any step.
+- Code review is mandatory for all changes
+- Test execution and fixing is required - create tests if missing
+- Debugging cleanup must be performed
+- Documentation updates are non-optional
+- Git workflow management must be completed
+
+## Core Functionality
+
+### 0. Branch Validation and Setup (Pre-flight Checks)
+
+- Check current branch with `git branch --show-current`
+- Check working directory status: `git status --porcelain`
+- Fetch latest from origin: `git fetch origin`
+- **If on `main` or `master` with uncommitted changes:**
+  - Determine feature name from changes (analyze modified files to suggest name, or use generic `feature/review-cleanup`)
+  - Create feature branch: `git checkout -b feature/{feature-name}`
+  - Changes automatically move to new branch (no commit needed yet)
+  - Continue with review process
+- **If on `main` or `master` with no changes:**
+  - Abort: Nothing to review. Create a feature branch first and make changes.
+- **If on feature branch with uncommitted changes:**
+  - Proceed with review (changes will be committed later)
+- **If on feature branch with clean working directory:**
+  - Ensure branch is up to date with main: `git status` (check if behind/ahead)
+  - Verify branch is not behind main (merge conflicts risk): `git log origin/main..HEAD` and `git log HEAD..origin/main`
+  - If behind, update: `git merge origin/main` or `git rebase origin/main` (handle conflicts if any)
+  - Proceed with review
+
+### 1. Code Review
+
+- Analyze Laravel code for best practices
+- Check security vulnerabilities in models, controllers, and routes
+- Validate database migrations and relationships
+- Consider performance optimizations, watch for common performance pitfalls like N+1 queries, lazy loading, etc.
+- Review controller logic and form requests
+- Make sure everything is done "the Laravel way"
+
+### 2. Test Execution and Fixing
+
+- make sure all new features are covered by tests. if not create a test for it.
+- Run `php artisan test` to execute all tests
+- Identify and fix failing tests by updating code logic
+- Ensure all tests pass before proceeding
+
+### 3. Debugging Cleanup
+
+- Remove `dd()`, `var_dump()`, and `console.log()` statements
+- Clean up temporary debug files and unused imports
+- Remove any development-only code
+
+### 4. Update Documentation
+
+- Update the AGENTS.md file with anything future agents need to know.
+- Update the CHANGELOG.md file with the changes made. Changelog should tell the story of the changes we have done and the decisions we made along the way to inform future agents.
+- Update the README.md file with the changes made. This is the documentation of HOW the app works, how to use it, how to dev on it, how to deploy it, etc.
+
+### 5. Git Workflow Management
+
+- Commit all changes: `git add . && git commit -m 'Code review: {brief-description-of-changes}'`
+- Push branch: `git push origin <current-branch>`
+- Check if PR already exists: `gh pr list --head <current-branch> --state open`
+- If PR exists, update it with new commits
+- If no PR exists, create PR: `gh pr create --title 'Code Review: {brief-description}' --body 'Automated code review, test fixes, and cleanup'`
+- **Do NOT merge the PR** - that is handled by the release skill
+
+## Task Execution Checklist
+
+### Phase 0: Branch Validation and Setup (Required)
+- [ ] Check current branch name
+- [ ] Check working directory status
+- [ ] If on main/master with changes: create feature branch and move changes
+- [ ] If on main/master without changes: abort (nothing to review)
+- [ ] If on feature branch: ensure up to date with main
+- [ ] Check for merge conflicts risk
+
+### Phase 1: Code Analysis (Required)
+- [ ] Run Read tool on all modified files
+- [ ] Analyze Laravel best practices compliance
+- [ ] Check for security vulnerabilities
+- [ ] Identify performance issues (N+1 queries, etc.)
+
+### Phase 2: Test Management (Required)
+- [ ] Execute `php artisan test`
+- [ ] Identify failing tests
+- [ ] Create missing tests for new features
+- [ ] Fix failing test logic
+- [ ] Re-run tests until all pass
+
+### Phase 3: Code Cleanup (Required)
+- [ ] Search for `dd()`, `var_dump()`, `console.log()`
+- [ ] Remove all debugging statements
+- [ ] Clean unused imports
+- [ ] Remove development-only code
+
+### Phase 4: Documentation Updates (Required)
+- [ ] Update AGENTS.md with new agent knowledge
+- [ ] Update CHANGELOG.md with detailed change narrative
+- [ ] Update README.md with usage/deployment changes
+
+### Phase 5: Git Workflow (Required)
+- [ ] Stage all changes
+- [ ] Commit with descriptive message
+- [ ] Push branch to origin
+- [ ] Create or update PR (do not merge - release skill handles merging)
+
+## Success Criteria
+The skill execution is complete only when:
+- Branch is validated and ready for work
+- All tests pass (100% success rate)
+- No debugging code remains
+- Documentation is updated in all required files
+- PR is created or updated (not merged - use release skill for merging)
+- Clean commit history maintained
+
+## Error Handling
+If any phase fails:
+- Stop execution and report the failure
+- Do not proceed to next phases
+- Provide clear remediation steps
+- Require manual intervention for critical failures
+
+## Task Approach
+
+1. Validate and setup branch (move off main if needed, ensure feature branch exists)
+2. Start with code analysis using Read tool
+3. Execute tests and fix issues
+4. Clean up debugging code
+5. Update documentation
+6. Commit and push changes, create/update PR
+7. Provide summary of changes made
+
+## Relationship to Release Skill
+
+- **Review skill**: Development workflow - validates, reviews, tests, cleans up, creates/updates PR
+- **Release skill**: Release workflow - assumes PR exists, performs quick review, approves, merges, tags release
+- Review skill should NOT merge PRs - that's the release skill's responsibility
+
+## Return Format
+
+Provide detailed summary including:
+
+- **Branch Setup**: Branch created if moved off main, branch name, status
+- **Code Issues**: List of problems found and resolutions
+- **Test Results**: Number passed/failed, fixes applied
+- **Cleanup Actions**: Files modified, statements removed
+- **Documentation Changes**: Files updated with summaries
+- **Git Actions**: Branch created, commit hash, PR link
+- **Final Status**: Success/failure with next steps
+- Link to github PR that can be clicked on
