@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-01-15
+
+### Changed
+- Synced Claude skills from chatseo repository
+- Enhanced release skill with changelog update functionality
+- Updated Cursor release command to match Claude skill improvements
+- Release workflow now commits changelog updates to PR before merging
+
 ## [1.1.0] - 2025-01-15
 
 ### Added
