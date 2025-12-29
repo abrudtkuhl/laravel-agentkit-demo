@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `review.mdc`: Comprehensive code review command for Laravel projects
 - `release.mdc`: Automated PR review, approval, and release command
 - Updated README.md with Cursor command usage instructions
+- Improved AGENTS.md with comprehensive agent guidelines (build/lint/test commands, code style, Laravel ecosystem rules)
 
 ## [1.0.1] - 2025-01-15
 
