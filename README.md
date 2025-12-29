@@ -1,59 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel AgentKit Demo
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A demonstration repository showcasing Claude skills, Cursor commands, and other AI-powered development tools for Laravel applications.
 
-## About Laravel
+## About
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This repository serves as a companion to the article ["Compound Engineering for Laravel"](https://brudtkuhl.com/blog/compound-engineering-for-laravel/), demonstrating how AI tools can enhance Laravel development workflows.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## What's Included
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Claude Skills (`.claude/skills/`)
+- **Release**: Skills for managing version releases and deployment
+- **Review**: Skills for code review and quality assurance
 
-## Learning Laravel
+### Cursor Commands (`.cursor/rules/`)
+- **Laravel Boost**: Custom rules and guidelines for Laravel development with AI assistance
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Laravel Application
+A fully functional Laravel application demonstrating best practices for AI-assisted development.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## What are Agents?
 
-## Laravel Sponsors
+Agents are specialized AI assistants that can perform specific tasks autonomously. In this repository:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Claude Skills**: Custom AI capabilities that extend Claude's functionality for specific Laravel development tasks
+- **Cursor Commands**: AI-powered code generation and refactoring tools integrated into your editor
+- **Boost Tools**: Laravel-specific AI enhancements that follow Laravel conventions and best practices
 
-### Premium Partners
+## Why This Repository?
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+This repository demonstrates the power of "compound engineering" - combining multiple AI tools to create a superior development experience:
+
+- **Accelerated Development**: AI tools handle repetitive tasks, allowing you to focus on business logic
+- **Consistent Code Quality**: AI follows established patterns and Laravel conventions
+- **Faster Learning**: See how AI tools work together in a real Laravel application
+- **Best Practices**: Learn how to integrate AI tools effectively into your workflow
+
+## Getting Started
+
+1. Clone this repository
+2. Install dependencies: `composer install && npm install`
+3. Set up your environment: `cp .env.example .env`
+4. Run migrations: `php artisan migrate`
+5. Start the development server: `php artisan serve`
+
+## How to Use It
+
+### Using Claude Skills
+1. Copy the skills from `.claude/skills/` to your Claude workspace
+2. Use the skills by mentioning them in your prompts (e.g., "Use the release skill to create a new version")
+
+### Using Cursor Commands
+1. The rules in `.cursor/rules/` are automatically applied when using Cursor with this project
+2. Cursor will follow the Laravel Boost guidelines for code generation and assistance
+
+### Exploring the Application
+- Run tests: `php artisan test`
+- Check code quality: `vendor/bin/pint --test`
+- View routes: `php artisan route:list`
+- Use Tinker for debugging: `php artisan tinker`
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+We welcome contributions to improve AI-assisted Laravel development! Here's how you can help:
 
-## Code of Conduct
+### Adding New Skills
+1. Create a new skill file in `.claude/skills/`
+2. Follow the existing skill format and documentation
+3. Test the skill thoroughly before submitting
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Improving Cursor Rules
+1. Update rules in `.cursor/rules/`
+2. Ensure they align with Laravel best practices
+3. Test the changes across different scenarios
 
-## Security Vulnerabilities
+### Enhancing the Demo App
+1. Follow Laravel conventions and the established patterns
+2. Add tests for new functionality
+3. Update documentation as needed
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Guidelines
+- Use descriptive commit messages
+- Ensure all tests pass before submitting
+- Follow the existing code style (Laravel Pint)
+- Document any new features or changes
+
+## Learn More
+
+Read the companion article: ["Compound Engineering for Laravel"](https://brudtkuhl.com/blog/compound-engineering-for-laravel/)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
