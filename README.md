@@ -14,6 +14,8 @@ This repository serves as a companion to the article ["Compound Engineering for 
 
 ### Cursor Commands (`.cursor/rules/`)
 - **Laravel Boost**: Custom rules and guidelines for Laravel development with AI assistance
+- **Release**: Automated PR review, approval, and release workflow for Laravel projects
+- **Review**: Comprehensive code review, testing, cleanup, and Git workflow management
 
 ### Laravel Application
 A fully functional Laravel application demonstrating best practices for AI-assisted development.
@@ -52,6 +54,8 @@ This repository demonstrates the power of "compound engineering" - combining mul
 ### Using Cursor Commands
 1. The rules in `.cursor/rules/` are automatically applied when using Cursor with this project
 2. Cursor will follow the Laravel Boost guidelines for code generation and assistance
+3. Use the `review` command for comprehensive code review, testing, and cleanup: `cursor review`
+4. Use the `release` command to automate PR approval, merging, and release tagging: `cursor release`
 
 ### Exploring the Application
 - Run tests: `php artisan test`

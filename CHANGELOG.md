@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2025-01-15
+
+### Added
+- Cursor commands that mirror Claude skills functionality
+- `review.mdc`: Comprehensive code review command for Laravel projects
+- `release.mdc`: Automated PR review, approval, and release command
+- Updated README.md with Cursor command usage instructions
+
 ## [1.0.1] - 2025-01-15
 
 ### Changed
