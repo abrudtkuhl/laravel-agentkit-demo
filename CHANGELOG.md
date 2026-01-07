@@ -7,13 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- New build skill: Project setup, testing, and quality assurance workflow
+- New lint skill: Code quality and style validation for PHP/Laravel standards
+- New style skill: Laravel-specific patterns and best practices guidance
+
 ### Changed
 - Updated AGENTS.md to reference Claude Code skills system for context efficiency
 - Replaced brief Cursor Commands section with comprehensive Skills System documentation
 - Added skills quick reference table and usage guidelines to prevent context bloat
 - Consolidated duplicate Laravel Boost Integration sections and added skills references
+- Refactored build/test/lint commands and code style guidelines into modular skills
+- Reduced AGENTS.md token count by ~30 lines through progressive disclosure
 - Updated README.md to emphasize skills-first approach while maintaining Cursor command examples
-- Added context efficiency notes and multi-environment support (Claude Code, Cursor, Opencode)
+- Added context efficiency benefits and multi-environment support (Claude Code, Cursor, Opencode)
 
 ## [1.2.0] - 2025-01-15
 

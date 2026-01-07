@@ -2,45 +2,15 @@
 
 This repository contains AI-powered Laravel development tools. All agents must follow these guidelines for consistent, high-quality code.
 
-## 🚀 Build, Lint & Test Commands
+## 🚀 Development Workflow Skills
 
-### Primary Commands
-- **Setup project**: `composer run setup`
-- **Start development**: `composer run dev`
-- **Run all tests**: `composer run test`
-- **Format code**: `vendor/bin/pint --dirty`
+For detailed build, testing, and quality assurance workflows, use the dedicated skills:
 
-### Single Test Commands
-- **Run test file**: `php artisan test tests/Feature/ExampleTest.php`
-- **Run test method**: `php artisan test --filter="test method name"`
-- **Run unit tests**: `php artisan test tests/Unit`
-- **Run feature tests**: `php artisan test tests/Feature`
+- **build**: Project setup, testing, and quality assurance (`skill name="build"` or `cursor build`)
+- **lint**: Code quality and style validation (`skill name="lint"` or `cursor lint`)
+- **style**: Laravel patterns and best practices (`skill name="style"` or `cursor style`)
 
-## 📝 Code Style Guidelines
 
-### PHP Standards
-- **PHP Version**: 8.4.16 minimum
-- **Indentation**: 4 spaces (no tabs)
-- **Max line length**: 120 characters
-
-### Naming Conventions
-- **Classes**: PascalCase (`UserController`)
-- **Methods**: camelCase (`getUserById()`)
-- **Variables**: camelCase (`$userEmail`)
-- **Constants**: UPPER_SNAKE_CASE (`MAX_RETRY_ATTEMPTS`)
-- **Database**: snake_case (`user_profiles`)
-
-### Type Declarations
-- **Return types**: Always declare return types for methods
-- **Parameter types**: Always type-hint parameters
-- **PHPDoc**: Use for complex logic, prefer inline for simple
-
-### Laravel Patterns
-- **Models**: Use `casts()` method, not `$casts` property
-- **Controllers**: Keep thin, use Form Requests and Resources
-- **Routes**: Use named routes and route model binding
-- **Validation**: Use Form Requests, not inline validation
-- **Security**: Define `$fillable` or `$guarded`, use Gates/Policies
 
 ## 🤖 AI Agent Guidelines
 
@@ -75,10 +45,46 @@ To prevent context bloat while maintaining specialized functionality, this proje
 
 | Skill | Purpose | Usage | When to Use |
 |-------|---------|-------|-------------|
+| **build** | Project setup, testing, quality assurance | `skill name="build"` or `cursor build` | Project initialization, comprehensive testing, quality gates |
+| **lint** | Code quality and style validation | `skill name="lint"` or `cursor lint` | Code formatting, naming conventions, type declarations |
+| **style** | Laravel patterns and best practices | `skill name="style"` or `cursor style` | Framework compliance, security patterns, performance optimization |
 | **review** | Code review, testing, cleanup, Git workflow | `skill name="review"` or `cursor review` | Comprehensive code quality checks, test execution, before commits |
 | **release** | PR approval, merging, changelog, releases | `skill name="release"` or `cursor release` | Ready to merge approved PRs, deployment preparation |
 
 ### Available Skills
+
+**build** - Project setup, testing, and quality assurance
+- **Purpose**: Automated project initialization, testing pipeline, and code formatting
+- **Location**: `.claude/skills/build/SKILL.md`
+- **Usage**: `skill name="build"` or `cursor build`
+- **When to Use**: Project setup, comprehensive testing, quality assurance before commits
+- **Examples**:
+  - Use for new project initialization
+  - Use to run full test suite and formatting
+  - Use before deployment to ensure quality gates pass
+- **Key Features**: Environment setup, test execution, code formatting, CI/CD integration
+
+**lint** - Code quality and style validation
+- **Purpose**: Automated code quality checks and style enforcement
+- **Location**: `.claude/skills/lint/SKILL.md`
+- **Usage**: `skill name="lint"` or `cursor lint`
+- **When to Use**: Code formatting, naming convention validation, type declaration checks
+- **Examples**:
+  - Use to validate PHP standards compliance
+  - Use to check naming conventions across codebase
+  - Use as pre-commit quality gate
+- **Key Features**: Style validation, naming checks, type declaration coverage, automatic fixes
+
+**style** - Laravel patterns and best practices
+- **Purpose**: Laravel-specific conventions and framework compliance validation
+- **Location**: `.claude/skills/style/SKILL.md`
+- **Usage**: `skill name="style"` or `cursor style`
+- **When to Use**: Framework compliance checks, security pattern validation, performance optimization
+- **Examples**:
+  - Use to validate Laravel patterns and conventions
+  - Use for security best practices assessment
+  - Use to ensure "Laravel Way" compliance
+- **Key Features**: Framework patterns, security validation, performance optimization, best practices
 
 **review** - Comprehensive code review, testing, cleanup, and Git workflow
 - **Purpose**: Automated code quality assurance, test execution, debug cleanup, documentation updates
@@ -144,15 +150,6 @@ To prevent context bloat while maintaining specialized functionality, this proje
 - Use Eloquent models and relationships before suggesting raw database queries
 - Generate code that prevents N+1 query problems by using eager loading
 
-### Testing
-- All tests must be written using Pest: `php artisan make:test --pest {name}`
-- Tests should test all happy paths, failure paths, and edge cases
-- Tests live in `tests/Feature` and `tests/Unit` directories
-- Use Pest syntax: `it('does something', function () { ... })`
 
-### Code Quality
-- You must run `vendor/bin/pint --dirty` before finalizing changes to ensure code matches project style
-- Remove debug statements (`dd()`, `var_dump()`, `console.log()`) before committing
-- Update documentation (README.md, CHANGELOG.md) for significant changes
 
 
