@@ -44,11 +44,13 @@ This repository contains AI-powered Laravel development tools. All agents must f
 
 ## 🤖 AI Agent Guidelines
 
-### Laravel Boost Integration
+### Laravel Boost Integration & Skills
 - Laravel Boost is an MCP server that comes with powerful tools designed specifically for this application. Use them.
 - Use the `search-docs` tool for version-specific Laravel documentation before implementing features
 - Use `list-artisan-commands` to verify available parameters for Artisan commands
 - Use `get-absolute-url` tool to generate proper URLs for sharing with users
+- Use skills for complex workflows that combine multiple tools and steps
+- Skills complement MCP servers by providing contextual instructions without context bloat
 
 ### Debugging & Development
 - Use the `tinker` tool for PHP code execution and debugging
@@ -56,9 +58,62 @@ This repository contains AI-powered Laravel development tools. All agents must f
 - Use `browser-logs` tool to read recent browser logs and errors
 - Use `last-error` tool to get details of the last backend error/exception
 
-### Cursor Commands
-- **Review Command**: `cursor review` - comprehensive code review, testing, cleanup, and Git workflow
-- **Release Command**: `cursor release` - automated PR review, approval, and release workflow
+## 🎯 Skills System
+
+To prevent context bloat while maintaining specialized functionality, this project uses Claude Code's skills system. Skills are stored in `.claude/skills/` and provide progressive disclosure - metadata loads first, full instructions only when invoked.
+
+### Skills Directory Structure
+```
+.claude/skills/
+├── review/
+│   └── SKILL.md
+└── release/
+    └── SKILL.md
+```
+
+### Skills Quick Reference
+
+| Skill | Purpose | Usage | When to Use |
+|-------|---------|-------|-------------|
+| **review** | Code review, testing, cleanup, Git workflow | `skill name="review"` or `cursor review` | Comprehensive code quality checks, test execution, before commits |
+| **release** | PR approval, merging, changelog, releases | `skill name="release"` or `cursor release` | Ready to merge approved PRs, deployment preparation |
+
+### Available Skills
+
+**review** - Comprehensive code review, testing, cleanup, and Git workflow
+- **Purpose**: Automated code quality assurance, test execution, debug cleanup, documentation updates
+- **Location**: `.claude/skills/review/SKILL.md`
+- **Usage**: `skill name="review"` or `cursor review`
+- **When to Use**: Before committing changes, comprehensive code review needed, test failures to fix
+- **Examples**:
+  - Use for new feature development with tests
+  - Use when multiple files changed and need validation
+  - Use instead of manual `php artisan test` + manual review
+- **Key Features**: Branch validation, code analysis, test execution/fixing, debug cleanup, changelog/PR updates
+
+**release** - Automated PR review, approval, and release workflow
+- **Purpose**: Streamlined PR approval, merging, changelog management, and deployment
+- **Location**: `.claude/skills/release/SKILL.md`
+- **Usage**: `skill name="release"` or `cursor release`
+- **When to Use**: After review skill completion, ready to merge approved PRs
+- **Examples**:
+  - Use when PR is reviewed and tests pass
+  - Use for production deployments with changelog updates
+  - Use instead of manual PR merging + tagging
+- **Key Features**: CI validation, changelog updates, PR approval/merging, Git tagging
+
+### Skills Usage Guidelines
+- **Progressive Loading**: Skills load metadata (~100 tokens) initially, full instructions on demand
+- **Tool Permissions**: Each skill specifies allowed tools for security and focus
+- **Workflow Integration**: Use `review` → `release` for complete development cycles
+- **Context Efficiency**: Skills prevent main guidelines from exceeding token limits
+- **Fallback**: For simple tasks, use direct commands instead of skills
+
+### Skills vs Direct Commands
+- **Use Skills**: Multi-step workflows, specialized domain tasks, complex validation
+  - Examples: Full code review cycle, PR merge + release process
+- **Use Direct**: Simple Git operations, quick file edits, standard Laravel commands
+  - Examples: `git add .`, `php artisan make:model`, quick test run
 
 ## 🔧 Development Tools & Workflow
 
@@ -100,12 +155,4 @@ This repository contains AI-powered Laravel development tools. All agents must f
 - Remove debug statements (`dd()`, `var_dump()`, `console.log()`) before committing
 - Update documentation (README.md, CHANGELOG.md) for significant changes
 
-### Laravel Boost Integration
-- Laravel Boost is an MCP server with powerful tools designed specifically for this application
-- Use the `search-docs` tool for version-specific Laravel documentation before implementing features
-- Use `list-artisan-commands` to verify available parameters for Artisan commands
-- Use `get-absolute-url` tool to generate proper URLs for sharing with users
 
-### Cursor Commands
-- **Review Command**: `cursor review` - comprehensive code review, testing, cleanup, and Git workflow
-- **Release Command**: `cursor release` - automated PR review, approval, and release workflow

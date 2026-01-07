@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Updated AGENTS.md to reference Claude Code skills system for context efficiency
+- Replaced brief Cursor Commands section with comprehensive Skills System documentation
+- Added skills quick reference table and usage guidelines to prevent context bloat
+- Consolidated duplicate Laravel Boost Integration sections and added skills references
+
 ## [1.2.0] - 2025-01-15
 
 ### Changed
