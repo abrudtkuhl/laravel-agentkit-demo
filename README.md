@@ -9,8 +9,11 @@ This repository serves as a companion to the article ["Compound Engineering for 
 ## What's Included
 
 ### Claude Skills (`.claude/skills/`)
-- **Release**: Skills for managing version releases and deployment
-- **Review**: Skills for code review and quality assurance
+- **Build**: Project setup, testing, and quality assurance workflow
+- **Lint**: Code quality and style validation for PHP/Laravel standards
+- **Style**: Laravel-specific patterns and best practices guidance
+- **Review**: Comprehensive code review, testing, cleanup, and Git workflow management
+- **Release**: Automated PR approval, merging, changelog updates, and Git tagging
 
 ### Cursor Integration (`.cursor/rules/`)
 - **Laravel Boost Rules**: Custom guidelines for Laravel development with AI assistance
@@ -51,13 +54,21 @@ This repository demonstrates the power of "compound engineering" - combining mul
 The skills in `.claude/skills/` provide context-efficient AI assistance that works in Claude Code, Cursor, and Opencode:
 
 1. **Skills load progressively** - only metadata loads initially (~100 tokens) to avoid context bloat
-2. **Direct skill usage**: `skill name="review"` or `skill name="release"`
+2. **Direct skill usage**:
+   - `skill name="build"` - Project setup and testing workflow
+   - `skill name="lint"` - Code quality and style validation
+   - `skill name="style"` - Laravel patterns and best practices
+   - `skill name="review"` - Comprehensive code review and cleanup
+   - `skill name="release"` - PR approval and release management
 3. **Context efficiency**: Full instructions load only when needed, preventing "max context, can't compact" errors
 4. **Multi-environment support**: Same skills work across Claude Code, Cursor, and Opencode
 
 ### Using Cursor Integration
 1. The rules in `.cursor/rules/` provide Laravel-specific guidance and command shortcuts
 2. Cursor commands serve as convenient shortcuts to the underlying Claude skills:
+   - `cursor build` - invokes the build skill for project setup and testing
+   - `cursor lint` - invokes the lint skill for code quality validation
+   - `cursor style` - invokes the style skill for Laravel pattern guidance
    - `cursor review` - invokes the review skill for comprehensive code review, testing, and cleanup
    - `cursor release` - invokes the release skill for PR approval, merging, and release tagging
 3. Full skill functionality is available regardless of which interface you use

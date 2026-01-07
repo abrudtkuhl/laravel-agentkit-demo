@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Consolidated duplicate Laravel Boost Integration sections and added skills references
 - Refactored build/test/lint commands and code style guidelines into modular skills
 - Reduced AGENTS.md token count by ~30 lines through progressive disclosure
-- Updated README.md to emphasize skills-first approach while maintaining Cursor command examples
+- Updated README.md to list all available skills and commands
 - Added context efficiency benefits and multi-environment support (Claude Code, Cursor, Opencode)
 
 ## [1.2.0] - 2025-01-15
