@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced brief Cursor Commands section with comprehensive Skills System documentation
 - Added skills quick reference table and usage guidelines to prevent context bloat
 - Consolidated duplicate Laravel Boost Integration sections and added skills references
+- Updated README.md to emphasize skills-first approach while maintaining Cursor command examples
+- Added context efficiency notes and multi-environment support (Claude Code, Cursor, Opencode)
 
 ## [1.2.0] - 2025-01-15
 
