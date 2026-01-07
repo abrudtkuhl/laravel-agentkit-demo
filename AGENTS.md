@@ -22,6 +22,12 @@ For detailed build, testing, and quality assurance workflows, use the dedicated 
 - Use skills for complex workflows that combine multiple tools and steps
 - Skills complement MCP servers by providing contextual instructions without context bloat
 
+### Project Evolution & Changelog
+- **CHANGELOG.md** documents significant changes, new skills, and workflow updates
+- **Check [Unreleased] section** for upcoming changes that may affect your work
+- **Review recent entries** to understand new capabilities and why certain patterns exist
+- **Reference when needed** to understand the evolution of tools and development approaches
+
 ### Debugging & Development
 - Use the `tinker` tool for PHP code execution and debugging
 - Use `database-query` tool for read-only database operations

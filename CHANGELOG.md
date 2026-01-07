@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Consolidated duplicate Laravel Boost Integration sections and added skills references
 - Refactored build/test/lint commands and code style guidelines into modular skills
 - Reduced AGENTS.md token count by ~30 lines through progressive disclosure
+- Added changelog reference in AGENTS.md for agents to understand project evolution
 - Updated README.md to list all available skills and commands
 - Added context efficiency benefits and multi-environment support (Claude Code, Cursor, Opencode)
 
